@@ -12,8 +12,13 @@ const balances = {
   "0x3": 75,
 };
 
+app.get("/balances", (req, res) => {
+  res.send(balances);
+});
+
 app.get("/balance/:address", (req, res) => {
   const { address } = req.params;
+  console.log("getting balance", address);
   const balance = balances[address] || 0;
   res.send({ balance });
 });
